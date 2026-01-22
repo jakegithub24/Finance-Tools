@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row text-center mb-5">
+    <div class="col">
+        <h1 class="display-4"><i class="fas fa-coins text-primary"></i> Financial Calculators</h1>
+        <p class="lead">Powerful tools to help you make informed financial decisions</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+            <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                    <i class="fas fa-calculator fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title"><b>EMI Calculator</b></h5>
+                <p class="card-text">Calculate your Equated Monthly Installment for loans</p>
+                <a href="/emi_calculator" class="btn btn-primary">
+                    <i class="fas fa-calculator me-2"></i>Calculate EMI
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+            <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                    <i class="fas fa-percentage fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title"><b>Simple Interest Calculator</b></h5>
+                <p class="card-text">Calculate simple interest on your investments or loans</p>
+                <a href="/interest_calculator" class="btn btn-primary">
+                    <i class="fas fa-percentage me-2"></i>Calculate Interest
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+            <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                    <i class="fas fa-chart-line fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title"><b>Compound Interest Calculator</b></h5>
+                <p class="card-text">See how your money can grow with compound interest</p>
+                <a href="/compound_interest" class="btn btn-primary">
+                    <i class="fas fa-chart-line me-2"></i>Calculate Compound Interest
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+            <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                    <i class="fas fa-piggy-bank fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title"><b>Savings Goal Calculator</b></h5>
+                <p class="card-text">Plan how to reach your savings goals</p>
+                <a href="/savings_goal" class="btn btn-primary">
+                    <i class="fas fa-piggy-bank me-2"></i>Plan Savings
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+            <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                    <i class="fas fa-user-tie fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title"><b>Retirement Planning</b></h5>
+                <p class="card-text">Plan for a secure retirement</p>
+                <a href="/retirement_planning" class="btn btn-primary">
+                    <i class="fas fa-user-tie me-2"></i>Plan Retirement
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+            <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                    <i class="fas fa-exchange-alt fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title"><b>Currency Converter</b></h5>
+                <p class="card-text">Convert between different currencies</p>
+                <a href="/currency_converter" class="btn btn-primary">
+                    <i class="fas fa-exchange-alt me-2"></i>Convert Currency
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

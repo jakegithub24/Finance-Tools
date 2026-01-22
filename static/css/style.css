@@ -1,0 +1,485 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,900;1,700&display=swap');
+
+:root {
+    --primary: #2c3e50;
+    --secondary: #8e44ad;
+    --accent: #3498db;
+    --light: #ecf0f1;
+    --dark: #2c3e50;
+    --success: #27ae60;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #34495e;
+}
+
+main {
+    flex: 1;
+    padding: 2rem 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0.8rem 1rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: white !important;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.02);
+}
+
+a.nav-link:hover {
+    color: #fff;
+}
+
+.navbar-brand i {
+    margin-right: 10px;
+    font-size: 1.8rem;
+}
+
+.dropdown-item:hover {
+    /* background-image: linear-gradient(to right, var(--secondary), var(--primary)); */
+    background-image: linear-gradient(to right, var(--primary), var(--secondary));
+    color: #fff;
+}
+
+.card {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background: white;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 12px 12px 0 0 !important;
+    padding: 1rem 1.5rem;
+    border: none;
+}
+
+.card-body {
+    padding: 1.8rem;
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.form-control {
+    border: 1px solid #dce4ec;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.2);
+}
+
+/* Keyframes for background animation */
+@keyframes backgroundChange {
+    0% {
+        background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+    }
+
+    5% {
+        background: linear-gradient(90deg, var(--secondary) 5%, var(--primary) 95%);
+    }
+
+    10% {
+        background: linear-gradient(90deg, var(--secondary) 10%, var(--primary) 90%);
+    }
+
+    15% {
+        background: linear-gradient(90deg, var(--secondary) 15%, var(--primary) 85%);
+    }
+
+    20% {
+        background: linear-gradient(90deg, var(--secondary) 20%, var(--primary) 80%);
+    }
+
+    25% {
+        background: linear-gradient(90deg, var(--secondary) 25%, var(--primary) 75%);
+    }
+
+    30% {
+        background: linear-gradient(90deg, var(--secondary) 30%, var(--primary) 70%);
+    }
+
+    35% {
+        background: linear-gradient(90deg, var(--secondary) 35%, var(--primary) 65%);
+    }
+
+    40% {
+        background: linear-gradient(90deg, var(--secondary) 40%, var(--primary) 60%);
+    }
+
+    45% {
+        background: linear-gradient(90deg, var(--secondary) 45%, var(--primary) 55%);
+    }
+
+    50% {
+        background: linear-gradient(90deg, var(--secondary) 50%, var(--primary) 50%);
+    }
+
+    55% {
+        background: linear-gradient(90deg, var(--primary) 50%, var(--secondary) 50%);
+        /* New step added */
+    }
+
+    60% {
+        background: linear-gradient(90deg, var(--primary) 45%, var(--secondary) 55%);
+    }
+
+    65% {
+        background: linear-gradient(90deg, var(--primary) 40%, var(--secondary) 60%);
+    }
+
+    70% {
+        background: linear-gradient(90deg, var(--primary) 35%, var(--secondary) 65%);
+    }
+
+    75% {
+        background: linear-gradient(90deg, var(--primary) 30%, var(--secondary) 70%);
+    }
+
+    80% {
+        background: linear-gradient(90deg, var(--primary) 25%, var(--secondary) 75%);
+    }
+
+    85% {
+        background: linear-gradient(90deg, var(--primary) 20%, var(--secondary) 80%);
+    }
+
+    90% {
+        background: linear-gradient(90deg, var(--primary) 15%, var(--secondary) 85%);
+    }
+
+    95% {
+        background: linear-gradient(90deg, var(--primary) 10%, var(--secondary) 90%);
+    }
+
+    100% {
+        background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+}
+
+@keyframes backgroundChangeBack {
+    0% {
+        background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+
+    5% {
+        background: linear-gradient(90deg, var(--primary) 5%, var(--secondary) 95%);
+    }
+
+    10% {
+        background: linear-gradient(90deg, var(--primary) 10%, var(--secondary) 90%);
+    }
+
+    15% {
+        background: linear-gradient(90deg, var(--primary) 15%, var(--secondary) 85%);
+    }
+
+    20% {
+        background: linear-gradient(90deg, var(--primary) 20%, var(--secondary) 80%);
+    }
+
+    25% {
+        background: linear-gradient(90deg, var(--primary) 25%, var(--secondary) 75%);
+    }
+
+    30% {
+        background: linear-gradient(90deg, var(--primary) 30%, var(--secondary) 70%);
+    }
+
+    35% {
+        background: linear-gradient(90deg, var(--primary) 35%, var(--secondary) 65%);
+    }
+
+    40% {
+        background: linear-gradient(90deg, var(--primary) 40%, var(--secondary) 60%);
+    }
+
+    45% {
+        background: linear-gradient(90deg, var(--primary) 45%, var(--secondary) 55%);
+    }
+
+    50% {
+        background: linear-gradient(90deg, var(--primary) 50%, var(--secondary) 50%);
+    }
+
+    55% {
+        background: linear-gradient(90deg, var(--secondary) 50%, var(--primary) 50%);
+    }
+
+    60% {
+        background: linear-gradient(90deg, var(--secondary) 45%, var(--primary) 55%);
+    }
+
+    65% {
+        background: linear-gradient(90deg, var(--secondary) 40%, var(--primary) 60%);
+    }
+
+    70% {
+        background: linear-gradient(90deg, var(--secondary) 35%, var(--primary) 65%);
+    }
+
+    75% {
+        background: linear-gradient(90deg, var(--secondary) 30%, var(--primary) 70%);
+    }
+
+    80% {
+        background: linear-gradient(90deg, var(--secondary) 35%, var(--primary) 75%);
+    }
+
+    85% {
+        background: linear-gradient(90deg, var(--secondary) 20%, var(--primary 80%));
+    }
+
+    90% {
+        background: linear-gradient(90deg, var(--secondary) 15%, var(--primary) 85%);
+    }
+
+    95% {
+        background: linear-gradient(90deg, var(--secondary) 10%, var(--primary) 90%);
+    }
+
+    100% {
+        background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+    }
+}
+
+.btn-primary {
+    /* background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%); */
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    animation: backgroundChange 0.3s forwards;
+    /* Add animation */
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:not(:hover) {
+    animation: backgroundChangeBack 0.3s forwards;
+}
+
+
+
+.result-item {
+    margin-bottom: 1.5rem;
+    padding: 1.2rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary);
+    transition: all 0.3s ease;
+}
+
+.result-item:hover {
+    background-color: #e9ecef;
+    transform: translateX(5px);
+}
+
+.result-value {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 0;
+    transition: color 0.3s ease;
+}
+
+.display-4 {
+    font-weight: 700;
+    color: var(--dark);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.display-4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -100px;
+    /*-- '-100px' because width of '::after' is '200px' --*/
+    width: 200px;
+    height: 3.8px;
+    background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+    border-radius: 2px;
+}
+
+.lead {
+    color: #6c757d;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 1.5rem 0;
+    margin-top: auto;
+}
+
+.calculator-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+.calculator-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.input-group-text {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+}
+
+.slider-value {
+    font-weight: 600;
+    color: var(--secondary);
+    transition: color 0.3s ease;
+}
+
+/* Range slider styling */
+.form-range::-webkit-slider-thumb {
+    background: var(--secondary);
+}
+
+.form-range::-moz-range-thumb {
+    background: var(--secondary);
+}
+
+/* Animation for results */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 0.8s ease;
+}
+
+
+/* Icon styling */
+.icon-container {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover effects for icons */
+.card:hover .icon-container i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Specific styling for form icons */
+.form-label i {
+    width: 20px;
+}
+
+/* Result item icons */
+.result-item h5 i {
+    width: 24px;
+    color: #6c757d;
+}
+
+/* Footer icons */
+footer .social-icons {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+footer .social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #0dcaf0;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.2rem;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+}

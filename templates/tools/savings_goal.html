@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Savings Goal Calculator{% endblock %}
+
+{% block content %}
+
+<style>
+    .card:hover {
+        margin: none !important;
+        transform: translateY(0px) !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3>Savings Goal Calculator</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="goal_amount" class="form-label">Goal Amount (₹)</label>
+                        <input type="number" class="form-control" id="goal_amount" name="goal_amount" required
+                            step="0.01" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="current_savings" class="form-label">Current Savings (₹)</label>
+                        <input type="number" class="form-control" id="current_savings" name="current_savings" required
+                            step="0.01" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="monthly_contribution" class="form-label">Monthly Contribution (₹)</label>
+                        <input type="number" class="form-control" id="monthly_contribution" name="monthly_contribution"
+                            required step="0.01" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="rate" class="form-label">Annual Interest Rate (%)</label>
+                        <input type="number" class="form-control" id="rate" name="rate" required step="0.01" min="0"
+                            value="5">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calculate Time to Goal</button>
+                </form>
+
+                {% if error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    {% if error is string %}
+                    {{ error }}
+                    {% else %}
+                    Please enter valid values!
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {% if calculated %}
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h3>Calculation Results</h3>
+            </div>
+            <div class="card-body">
+                <div class="result-item">
+                    <h5>Time to Reach Your Goal:</h5>
+                    <p class="result-value">{{ years }} years and {{ months }} months</p>
+                </div>
+                <div class="result-item">
+                    <h5>Total Months:</h5>
+                    <p class="result-value">{{ total_months }} months</p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h3>About Savings Goals</h3>
+            </div>
+            <div class="card-body">
+                <p>This calculator helps you determine how long it will take to reach your savings goal based on your
+                    current savings, monthly contributions, and expected interest rate.</p>
+                <p>Setting specific savings goals can help you:</p>
+                <ul>
+                    <li>Stay motivated to save regularly</li>
+                    <li>Track your progress over time</li>
+                    <li>Make adjustments to your saving strategy if needed</li>
+                    <li>Achieve financial milestones like buying a house, car, or planning a vacation</li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

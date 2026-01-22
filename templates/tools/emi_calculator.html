@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}EMI Calculator{% endblock %}
+
+{% block content %}
+
+<style>
+    .card:hover {
+        margin: none !important;
+        transform: translateY(0px) !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3><i class="fas fa-calculator me-2"></i>EMI Calculator</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="principal" class="form-label">
+                            <i class="fas fa-rupee-sign me-1"></i>Loan Amount (₹)
+                        </label>
+                        <input type="number" class="form-control" id="principal" name="principal" required step="0.01"
+                            min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="rate" class="form-label">
+                            <i class="fas fa-percent me-1"></i>Interest Rate (% per annum)
+                        </label>
+                        <input type="number" class="form-control" id="rate" name="rate" required step="0.01" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tenure" class="form-label">
+                            <i class="fas fa-calendar-alt me-1"></i>Loan Tenure (Years)
+                        </label>
+                        <input type="number" class="form-control" id="tenure" name="tenure" required step="0.1" min="0">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-calculator me-2"></i>Calculate EMI
+                    </button>
+                </form>
+
+                {% if error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    <i class="fas fa-exclamation-triangle me-2"></i>Please enter valid values!
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {% if calculated %}
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h3><i class="fas fa-chart-pie me-2"></i>Calculation Results</h3>
+            </div>
+            <div class="card-body">
+                <div class="result-item">
+                    <h5><i class="fas fa-money-bill-wave me-2"></i>Monthly EMI:</h5>
+                    <p class="result-value">₹ {{ emi }}</p>
+                </div>
+                <div class="result-item">
+                    <h5><i class="fas fa-money-check me-2"></i>Total Payment:</h5>
+                    <p class="result-value">₹ {{ total_payment }}</p>
+                </div>
+                <div class="result-item">
+                    <h5><i class="fas fa-chart-line me-2"></i>Total Interest:</h5>
+                    <p class="result-value">₹ {{ total_interest }}</p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h3><i class="fas fa-info-circle me-2"></i>About EMI Calculator</h3>
+            </div>
+            <div class="card-body">
+                <p><i class="fas fa-quote-left me-2"></i>EMI (Equated Monthly Installment) is a fixed payment amount
+                    made by a borrower to a lender at a specified date each calendar month.</p>
+                <p>Use this calculator to determine your monthly loan repayment amount based on the loan amount,
+                    interest rate, and loan tenure.</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Compound Interest Calculator{% endblock %}
+
+{% block content %}
+
+<style>
+    .card:hover {
+        margin: none !important;
+        transform: translateY(0px) !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3>Compound Interest Calculator</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="principal" class="form-label">Principal Amount (₹)</label>
+                        <input type="number" class="form-control" id="principal" name="principal" required step="0.01"
+                            min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="rate" class="form-label">Annual Interest Rate (%)</label>
+                        <input type="number" class="form-control" id="rate" name="rate" required step="0.01" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label">Time Period (Years)</label>
+                        <input type="number" class="form-control" id="time" name="time" required step="0.1" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="compounding" class="form-label">Compounding Frequency</label>
+                        <select class="form-select" id="compounding" name="compounding">
+                            <option value="1">Annually</option>
+                            <option value="2">Semi-Annually</option>
+                            <option value="4">Quarterly</option>
+                            <option value="12" selected>Monthly</option>
+                            <option value="365">Daily</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calculate Compound Interest</button>
+                </form>
+
+                {% if error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    Please enter valid values!
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {% if calculated %}
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h3>Calculation Results</h3>
+            </div>
+            <div class="card-body">
+                <div class="result-item">
+                    <h5>Compound Interest:</h5>
+                    <p class="result-value">₹ {{ compound_interest }}</p>
+                </div>
+                <div class="result-item">
+                    <h5>Total Amount:</h5>
+                    <p class="result-value">₹ {{ amount }}</p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h3>About Compound Interest</h3>
+            </div>
+            <div class="card-body">
+                <p>Compound interest is the interest calculated on the initial principal and also on the accumulated
+                    interest of previous periods.</p>
+                <p>The formula for compound interest is:</p>
+                <p class="text-center">A = P × (1 + r/n)<sup>nt</sup></p>
+                <p>Where:<br>
+                    A = Final amount<br>
+                    P = Principal amount<br>
+                    r = Annual interest rate<br>
+                    n = Number of compounding periods per year<br>
+                    t = Time in years</p>
+                <p>Compound interest is often called "interest on interest" and makes a sum grow faster than simple
+                    interest.</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

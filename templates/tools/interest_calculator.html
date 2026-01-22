@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Simple Interest Calculator{% endblock %}
+
+{% block content %}
+
+<style>
+    .card:hover {
+        margin: none !important;
+        transform: translateY(0px) !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3>Simple Interest Calculator</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="principal" class="form-label">Principal Amount (₹)</label>
+                        <input type="number" class="form-control" id="principal" name="principal" required step="0.01"
+                            min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="rate" class="form-label">Interest Rate (% per annum)</label>
+                        <input type="number" class="form-control" id="rate" name="rate" required step="0.01" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label">Time Period (Years)</label>
+                        <input type="number" class="form-control" id="time" name="time" required step="0.1" min="0">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calculate Interest</button>
+                </form>
+
+                {% if error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    Please enter valid values!
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {% if calculated %}
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h3>Calculation Results</h3>
+            </div>
+            <div class="card-body">
+                <div class="result-item">
+                    <h5>Simple Interest:</h5>
+                    <p class="result-value">₹ {{ simple_interest }}</p>
+                </div>
+                <div class="result-item">
+                    <h5>Total Amount:</h5>
+                    <p class="result-value">₹ {{ amount }}</p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h3>About Simple Interest</h3>
+            </div>
+            <div class="card-body">
+                <p>Simple interest is calculated only on the principal amount, or on that portion of the principal
+                    amount that remains unpaid.</p>
+                <p>The formula for simple interest is:</p>
+                <p class="text-center">I = P × R × T</p>
+                <p>Where:<br>
+                    I = Interest<br>
+                    P = Principal amount<br>
+                    R = Rate of interest per year<br>
+                    T = Time period in years</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

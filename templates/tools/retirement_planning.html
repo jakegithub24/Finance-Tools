@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Retirement Planning Calculator{% endblock %}
+
+{% block content %}
+
+<style>
+    .card:hover {
+        margin: none !important;
+        transform: translateY(0px) !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3>Retirement Planning Calculator</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="current_age" class="form-label">Current Age</label>
+                        <input type="number" class="form-control" id="current_age" name="current_age" required min="18"
+                            max="100">
+                    </div>
+                    <div class="mb-3">
+                        <label for="retirement_age" class="form-label">Desired Retirement Age</label>
+                        <input type="number" class="form-control" id="retirement_age" name="retirement_age" required
+                            min="40" max="100">
+                    </div>
+                    <div class="mb-3">
+                        <label for="current_savings" class="form-label">Current Retirement Savings (₹)</label>
+                        <input type="number" class="form-control" id="current_savings" name="current_savings" required
+                            step="0.01" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="monthly_contribution" class="form-label">Monthly Contribution (₹)</label>
+                        <input type="number" class="form-control" id="monthly_contribution" name="monthly_contribution"
+                            required step="0.01" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="rate" class="form-label">Expected Annual Return (%)</label>
+                        <input type="number" class="form-control" id="rate" name="rate" required step="0.01" min="0"
+                            value="7">
+                    </div>
+                    <div class="mb-3">
+                        <label for="life_expectancy" class="form-label">Life Expectancy</label>
+                        <input type="number" class="form-control" id="life_expectancy" name="life_expectancy" required
+                            min="65" max="120" value="85">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calculate Retirement Plan</button>
+                </form>
+
+                {% if error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    Please enter valid values!
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {% if calculated %}
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h3>Retirement Projection</h3>
+            </div>
+            <div class="card-body">
+                <div class="result-item">
+                    <h5>Retirement Savings at Retirement:</h5>
+                    <p class="result-value">₹ {{ retirement_savings }}</p>
+                </div>
+                <div class="result-item">
+                    <h5>Monthly Withdrawal During Retirement:</h5>
+                    <p class="result-value">₹ {{ monthly_withdrawal }}</p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h3>About Retirement Planning</h3>
+            </div>
+            <div class="card-body">
+                <p>Retirement planning is the process of determining retirement income goals and the actions and
+                    decisions necessary to achieve those goals.</p>
+                <p>Key aspects of retirement planning include:</p>
+                <ul>
+                    <li>Identifying sources of retirement income</li>
+                    <li>Estimating expenses in retirement</li>
+                    <li>Implementing a savings program</li>
+                    <li>Managing assets and risk</li>
+                </ul>
+                <p>This calculator helps you estimate how much you need to save for retirement and what your potential
+                    monthly income might be during retirement.</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

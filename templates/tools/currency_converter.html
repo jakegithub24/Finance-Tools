@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Currency Converter{% endblock %}
+
+{% block content %}
+
+<style>
+    .card:hover {
+        margin: none !important;
+        transform: translateY(0px) !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3>Currency Converter</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="amount" name="amount" required step="0.01" min="0"
+                            value="100">
+                    </div>
+                    <div class="mb-3">
+                        <label for="from_currency" class="form-label">From Currency</label>
+                        <select class="form-select" id="from_currency" name="from_currency">
+                            <option value="USD" selected>US Dollar (USD)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                            <option value="GBP">British Pound (GBP)</option>
+                            <option value="INR">Indian Rupee (INR)</option>
+                            <option value="JPY">Japanese Yen (JPY)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="to_currency" class="form-label">To Currency</label>
+                        <select class="form-select" id="to_currency" name="to_currency">
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="EUR" selected>Euro (EUR)</option>
+                            <option value="GBP">British Pound (GBP)</option>
+                            <option value="INR">Indian Rupee (INR)</option>
+                            <option value="JPY">Japanese Yen (JPY)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Convert Currency</button>
+                </form>
+
+                {% if error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    Please enter valid values!
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        {% if calculated %}
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h3>Conversion Result</h3>
+            </div>
+            <div class="card-body text-center">
+                <h4>{{ request.form.amount }} {{ request.form.from_currency }} =</h4>
+                <h2 class="display-4 text-primary">{{ converted_amount }} {{ request.form.to_currency }}</h2>
+                <p class="text-muted mt-3">Exchange rates are for demonstration purposes only and may not reflect
+                    current market rates.</p>
+            </div>
+        </div>
+        {% else %}
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h3>About Currency Conversion</h3>
+            </div>
+            <div class="card-body">
+                <p>Currency conversion is the process of exchanging one currency for another, typically for commerce,
+                    trading, or tourism.</p>
+                <p>Key factors that affect exchange rates include:</p>
+                <ul>
+                    <li>Interest rates</li>
+                    <li>Inflation rates</li>
+                    <li>Political stability</li>
+                    <li>Economic performance</li>
+                    <li>Market speculation</li>
+                </ul>
+                <p class="text-muted">Note: This converter uses fixed exchange rates for demonstration purposes. In a
+                    real application, you would connect to a currency exchange API to get live rates.</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
